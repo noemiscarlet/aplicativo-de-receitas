@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Footer } from '../Componentes/Footer/Footer';
+import { Footer } from '../componentes/Footer/Footer';
 
 describe('Footer', () => {
   test('Verifica imagem e label button Drink', () => {

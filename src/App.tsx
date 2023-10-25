@@ -5,7 +5,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './componentes/Layout';
 import Profile from './pages/Profile/Profile';
-import Drinks from './pages/Drinks/Drinks';
+import { Drinks } from './pages/Drinks/Drinks';
 import DoneRecipes from './pages/Recipes/DoneRecipes';
 import FavoriteRecipes from './pages/Recipes/FavoriteRecipes';
 import NotFound from './pages/NotFound';

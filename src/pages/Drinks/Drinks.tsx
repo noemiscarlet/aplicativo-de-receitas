@@ -1,5 +1,7 @@
+import { Footer } from '../../Componentes/Footer/Footer';
+
 export function Drinks() {
   return (
-    <div>This is the drinks page</div>
+    <Footer />
   );
 }

@@ -1,7 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import App from '../App';
+
+const EMAIL_INPUT = 'email-input';
+const PASSWORD_INPUT = 'password-input';
+const EMAIL_VALUE = 'xablau@xablau.com';
+const EMAIL_VALUE_NOT_OK = 'xablau';
+const PASSWORD_VALUE = '1234567';
+const PASSWORD_VALUE_NOT_OK = '1237';
+const BTN_ENTER = 'login-submit-btn';
 
 describe('Tests for Req. 02 - 06', () => {
   test('1 - Test if the email input is rendered', () => {
@@ -10,7 +17,7 @@ describe('Tests for Req. 02 - 06', () => {
         <App />
       </BrowserRouter>,
     );
-    const login = screen.getByTestId('email-input');
+    const login = screen.getByTestId(EMAIL_INPUT);
 
     expect(login).toBeInTheDocument();
   });
@@ -21,7 +28,7 @@ describe('Tests for Req. 02 - 06', () => {
         <App />
       </BrowserRouter>,
     );
-    const password = screen.getByTestId('password-input');
+    const password = screen.getByTestId(PASSWORD_INPUT);
 
     expect(password).toBeInTheDocument();
   });
@@ -32,8 +39,8 @@ describe('Tests for Req. 02 - 06', () => {
         <App />
       </BrowserRouter>,
     );
-    const login = screen.getByTestId('email-input');
-    fireEvent.change(login, { target: { value: 'xablau@xablau.com' } });
+    const login = screen.getByTestId(EMAIL_INPUT);
+    fireEvent.change(login, { target: { value: EMAIL_VALUE } });
   });
 
   test('4 - User is able to write a password in the password input field', () => {
@@ -42,8 +49,8 @@ describe('Tests for Req. 02 - 06', () => {
         <App />
       </BrowserRouter>,
     );
-    const password = screen.getByTestId('password-input');
-    fireEvent.change(password, { target: { value: '1234567' } });
+    const password = screen.getByTestId(PASSWORD_INPUT);
+    fireEvent.change(password, { target: { value: PASSWORD_VALUE } });
   });
 
   test('5 - Checks if the button ENTER is disabled when eMail is invalid', () => {
@@ -53,10 +60,10 @@ describe('Tests for Req. 02 - 06', () => {
       </BrowserRouter>,
     );
 
-    const btn = screen.getByTestId('login-submit-btn');
-    const login = screen.getByTestId('email-input');
+    const btn = screen.getByTestId(BTN_ENTER);
+    const login = screen.getByTestId(EMAIL_INPUT);
 
-    fireEvent.change(login, { target: { value: 'xablau' } });
+    fireEvent.change(login, { target: { value: EMAIL_VALUE_NOT_OK } });
     expect(btn).toBeDisabled();
   });
 
@@ -67,12 +74,12 @@ describe('Tests for Req. 02 - 06', () => {
       </BrowserRouter>,
     );
 
-    const btnEnter = screen.getByTestId('login-submit-btn');
-    const login = screen.getByTestId('email-input');
-    const password = screen.getByTestId('password-input');
+    const btnEnter = screen.getByTestId(BTN_ENTER);
+    const login = screen.getByTestId(EMAIL_INPUT);
+    const password = screen.getByTestId(PASSWORD_INPUT);
 
-    fireEvent.change(login, { target: { value: 'xablau' } });
-    fireEvent.change(password, { target: { value: '1237' } });
+    fireEvent.change(login, { target: { value: EMAIL_VALUE_NOT_OK } });
+    fireEvent.change(password, { target: { value: PASSWORD_VALUE_NOT_OK } });
 
     expect(btnEnter).toBeDisabled();
   });
@@ -84,13 +91,13 @@ describe('Tests for Req. 02 - 06', () => {
       </BrowserRouter>,
     );
 
-    const login = screen.getByTestId('email-input');
-    const password = screen.getByTestId('password-input');
+    const login = screen.getByTestId(EMAIL_INPUT);
+    const password = screen.getByTestId(PASSWORD_INPUT);
 
-    const btnEnter = screen.getByTestId('login-submit-btn');
+    const btnEnter = screen.getByTestId(BTN_ENTER);
 
-    fireEvent.change(login, { target: { value: 'xablau@xablau.com' } });
-    fireEvent.change(password, { target: { value: '1234567' } });
+    fireEvent.change(login, { target: { value: EMAIL_VALUE } });
+    fireEvent.change(password, { target: { value: PASSWORD_VALUE } });
 
     expect(btnEnter).toBeEnabled();
   });
@@ -102,12 +109,12 @@ describe('Tests for Req. 02 - 06', () => {
       </BrowserRouter>,
     );
 
-    const login = screen.getByTestId('email-input');
-    const password = screen.getByTestId('password-input');
-    const btnEnter = screen.getByTestId('login-submit-btn');
+    const login = screen.getByTestId(EMAIL_INPUT);
+    const password = screen.getByTestId(PASSWORD_INPUT);
+    const btnEnter = screen.getByTestId(BTN_ENTER);
 
-    fireEvent.change(login, { target: { value: 'xablau@xablau.com' } });
-    fireEvent.change(password, { target: { value: '1234567' } });
+    fireEvent.change(login, { target: { value: EMAIL_VALUE } });
+    fireEvent.change(password, { target: { value: PASSWORD_VALUE } });
     fireEvent.click(btnEnter);
     expect(window.location.pathname).toBe('/meals');
   });

@@ -1,6 +1,6 @@
-import { Footer } from '../../Componentes/Footer/Footer';
+import { Footer } from '../../componentes/Footer/Footer';
 
-export function Drinks() {
+export default function Drinks() {
   return (
     <Footer />
   );

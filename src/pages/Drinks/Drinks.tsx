@@ -1,4 +1,4 @@
-export default function Drinks() {
+export function Drinks() {
   return (
     <div>This is the drinks page</div>
   );

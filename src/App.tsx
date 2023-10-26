@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './componentes/Layout';
 import Profile from './pages/Profile/Profile';
 import Drinks from './pages/Drinks/Drinks';
+import RecipeDetails from './pages/Recipes/RecipeDetails';
 import DoneRecipes from './pages/Recipes/DoneRecipes';
 import FavoriteRecipes from './pages/Recipes/FavoriteRecipes';
 import NotFound from './pages/NotFound';
@@ -19,6 +20,8 @@ function App() {
           <Route path="/meals" element={ <Recipes /> } />
           <Route path="/drinks" element={ <Drinks /> } />
           <Route path="/profile" element={ <Profile /> } />
+          <Route path="/meals/:id_da_receita" element={ <RecipeDetails /> } />
+          <Route path="/drinks/:id_da_receita" element={ <RecipeDetails /> } />
           <Route path="/done-recipes" element={ <DoneRecipes /> } />
           <Route path="favorite-recipes" element={ <FavoriteRecipes /> } />
           <Route path="/*" element={ <NotFound /> } />

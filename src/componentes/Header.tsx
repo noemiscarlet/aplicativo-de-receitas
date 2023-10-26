@@ -1,14 +1,21 @@
 import { useLocation, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
+import SearchContext from '../context/SearchContext';
 
 function Header() {
+  const { searchText, setSearchText } = useContext(SearchContext);
   const [showInput, setShowInput] = useState(false);
+  // const [searchText, setSearchText] = useState('');
   const location = useLocation();
   const notSearch = ['/meals', '/drinks'].includes(location.pathname);
 
   let titlePage = '';
+  useEffect(() => {
+    setShowInput(false);
+  }, [location.pathname]);
 
   switch (location.pathname) {
     case '/meals':
@@ -52,12 +59,19 @@ function Header() {
         )}
       </nav>
       <h1 data-testid="page-title">{titlePage}</h1>
-      {showInput && <input
-        type="text"
-        name=""
-        id=""
-        data-testid="search-input"
-      />}
+      {showInput && (
+        <div>
+          <input
+            type="text"
+            name=""
+            id=""
+            value={ searchText }
+            onChange={ (e) => setSearchText(e.target.value) }
+            data-testid="search-input"
+          />
+          <SearchBar />
+        </div>
+      )}
     </header>
   );
 }

@@ -1,30 +1,28 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
+import SearchContext from '../context/SearchContext';
 
-type SearchProps = {
-  searchText: string,
-};
-
-function Search({ searchText }: SearchProps) {
+function Search() {
   // armazenar os valores dos input radio
-  const [searchType, setSearchType] = useState({
-    searchText,
-    searchRadio: '',
-  });
+//   const [searchType, setSearchType] = useState({
+//     searchText,
+//     searchRadio: '',
+//   });
+  const { searchType, setSearchType, handleSearch } = useContext(SearchContext);
   const nameRadio = 'searchRadio';
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
+  //   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  //     event.preventDefault();
+  //   };
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = target;
-    setSearchType({
-      ...searchType,
-      [name]: value,
-    });
-  };
+  //   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  //     const { name, value } = target;
+  //     setSearchType({
+  //       ...searchType,
+  //       [name]: value,
+  //     });
+  //   };
 
   return (
-    <form>
+    <div>
       <label
         htmlFor="search-ingredient"
       >
@@ -32,7 +30,8 @@ function Search({ searchText }: SearchProps) {
           type="radio"
           name={ nameRadio }
           value="ingredient"
-          onChange={ (event) => handleChange(event) }
+          checked={ searchType === 'ingredient' }
+          onChange={ () => setSearchType('ingredient') }
           id="search-ingredient"
           data-testid="ingredient-search-radio"
         />
@@ -45,7 +44,8 @@ function Search({ searchText }: SearchProps) {
           type="radio"
           name={ nameRadio }
           value="nome"
-          onChange={ (event) => handleChange(event) }
+          checked={ searchType === 'nome' }
+          onChange={ () => setSearchType('nome') }
           id="search-name"
           data-testid="name-search-radio"
         />
@@ -59,18 +59,19 @@ function Search({ searchText }: SearchProps) {
           name={ nameRadio }
           id="search-first"
           value="first-letter"
-          onChange={ (event) => handleChange(event) }
+          checked={ searchType === 'first-letter' }
+          onChange={ () => setSearchType('first-letter') }
           data-testid="first-letter-search-radio"
         />
         First letter
       </label>
       <button
-        type="submit"
         data-testid="exec-search-btn"
+        onClick={ handleSearch }
       >
         Search
       </button>
-    </form>
+    </div>
   );
 }
 

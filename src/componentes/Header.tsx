@@ -1,12 +1,14 @@
 import { useLocation, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Search from './Search';
+import SearchContext from '../context/SearchContext';
 
 function Header() {
+  const { searchText, setSearchText } = useContext(SearchContext);
   const [showInput, setShowInput] = useState(false);
-  const [searchText, setSearchText] = useState('');
+  // const [searchText, setSearchText] = useState('');
   const location = useLocation();
   const notSearch = ['/meals', '/drinks'].includes(location.pathname);
 
@@ -64,9 +66,9 @@ function Header() {
             onChange={ (e) => setSearchText(e.target.value) }
             data-testid="search-input"
           />
-          <Search searchText={ searchText } />
         </div>
       )}
+      <Search />
     </header>
   );
 }

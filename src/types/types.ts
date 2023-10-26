@@ -20,6 +20,10 @@ export type CategoryTypes = {
 };
 
 export type ContextSearch = {
-  resultsSearch: MealsCardType[] | DrinksCardType[],
-
+  searchText: string,
+  setSearchText: React.Dispatch<React.SetStateAction<string>>,
+  searchType: string,
+  setSearchType: React.Dispatch<React.SetStateAction<string>>,
+  handleSearch: () => Promise<void>,
+  resultsSearch: MealsCardType[],
 };

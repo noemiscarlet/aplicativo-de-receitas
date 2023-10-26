@@ -1,5 +1,20 @@
+import { useContext } from 'react';
+import SearchContext from '../../context/SearchContext';
+
 export default function Meals() {
+  const { resultsSearch } = useContext(SearchContext);
   return (
-    <div>This is the recipes page inside the layout</div>
+    <ul>
+      {resultsSearch.map((infoSearch) => (
+        <li key={ infoSearch.idMeal }>
+          <img
+            src={ infoSearch.strMealThumb }
+            alt={ infoSearch.strMeal }
+            style={ { width: '150px' } }
+          />
+          {infoSearch.strMeal}
+        </li>
+      ))}
+    </ul>
   );
 }

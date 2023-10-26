@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import SearchContext from '../../context/SearchContext';
+import { Footer } from '../../componentes/Footer/Footer';
 
 export default function Meals() {
   const { resultsMealSearch } = useContext(SearchContext);
@@ -16,5 +17,6 @@ export default function Meals() {
         </li>
       ))}
     </ul>
+    <Footer />
   );
 }

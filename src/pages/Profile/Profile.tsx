@@ -1,5 +1,7 @@
+import { Footer } from '../../componentes/Footer/Footer';
+
 export default function Profile() {
   return (
-    <div>This is the User Profile Page</div>
+    <Footer />
   );
 }

@@ -1,25 +1,9 @@
-import { FormEvent, useContext, useState } from 'react';
+import { useContext } from 'react';
 import SearchContext from '../context/SearchContext';
 
-function Search() {
-  // armazenar os valores dos input radio
-//   const [searchType, setSearchType] = useState({
-//     searchText,
-//     searchRadio: '',
-//   });
+function SearchBar() {
   const { searchType, setSearchType, handleSearch } = useContext(SearchContext);
   const nameRadio = 'searchRadio';
-  //   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-  //     event.preventDefault();
-  //   };
-
-  //   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-  //     const { name, value } = target;
-  //     setSearchType({
-  //       ...searchType,
-  //       [name]: value,
-  //     });
-  //   };
 
   return (
     <div>
@@ -75,4 +59,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default SearchBar;

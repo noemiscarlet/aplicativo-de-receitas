@@ -25,5 +25,6 @@ export type ContextSearch = {
   searchType: string,
   setSearchType: React.Dispatch<React.SetStateAction<string>>,
   handleSearch: () => Promise<void>,
-  resultsSearch: MealsCardType[],
+  resultsMealSearch: MealsCardType[],
+  resultsDrinkSearch: DrinksCardType[],
 };

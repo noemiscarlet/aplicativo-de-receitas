@@ -1,8 +1,8 @@
 import { useLocation, Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import Search from './Search';
+import SearchBar from './SearchBar';
 import SearchContext from '../context/SearchContext';
 
 function Header() {
@@ -13,6 +13,9 @@ function Header() {
   const notSearch = ['/meals', '/drinks'].includes(location.pathname);
 
   let titlePage = '';
+  useEffect(() => {
+    setShowInput(false);
+  }, [location.pathname]);
 
   switch (location.pathname) {
     case '/meals':
@@ -66,9 +69,9 @@ function Header() {
             onChange={ (e) => setSearchText(e.target.value) }
             data-testid="search-input"
           />
+          <SearchBar />
         </div>
       )}
-      <Search />
     </header>
   );
 }

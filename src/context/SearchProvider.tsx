@@ -1,19 +1,20 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchContext from './SearchContext';
-import searchIngredient from '../services/searchIngredient';
-import searchName from '../services/searchName';
-import searchFirstLetter from '../services/searchFirstLetter';
+import { searchFirstLetter,
+  searchIngredient,
+  searchName } from '../services/searchAPI';
 
 type SearchProviderProps = {
   children: React.ReactNode;
 };
 
 function SearchProvider({ children }: SearchProviderProps) {
-  // armazenar os valores dos input radio
+  const navigate = useNavigate();
   const [searchType, setSearchType] = useState('ingredient');
-  // armazenar o valor do campo search input
   const [searchText, setSearchText] = useState('');
-  const [resultsSearch, setResultsSearch] = useState([]);
+  const [resultsMealSearch, setResultsMealSearch] = useState([]);
+  const [resultsDrinkSearch, setResultsDrinkSearch] = useState([]);
 
   const handleSearch = async () => {
     let functionsSearch;
@@ -29,19 +30,38 @@ function SearchProvider({ children }: SearchProviderProps) {
       }
       functionsSearch = searchFirstLetter;
     }
+    verifyLocation(functionsSearch);
+  };
+  const nenhum = "Sorry, we haven't found any recipes for these filters.";
 
-    if (functionsSearch) {
-      const results = await functionsSearch(searchText);
-      setResultsSearch(results);
+  const verifyLocation = async (functionsSearch: any) => {
+    try {
+      if (functionsSearch) {
+        const results = await functionsSearch(searchText);
+        if (window.location.pathname === '/meals') {
+          console.log('meu results', results);
+          setResultsMealSearch(results.meals);
+          if (results.meals.length === 1) {
+            navigate(`/meals/${results.meals[0].idMeal}`);
+          }
+        } else if (window.location.pathname === '/drinks') {
+          setResultsDrinkSearch(results.drinks);
+          if (results.drinks.length === 1) {
+            navigate(`/drinks/${results.drinks[0].idDrink}`);
+          }
+        }
+      }
+    } catch (err) {
+      window.alert(nenhum);
     }
   };
-
   const contextValue = {
     searchText,
     setSearchText,
     searchType,
     setSearchType,
-    resultsSearch,
+    resultsMealSearch,
+    resultsDrinkSearch,
     handleSearch,
   };
   return (

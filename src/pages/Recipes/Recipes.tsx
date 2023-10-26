@@ -2,10 +2,10 @@ import { useContext } from 'react';
 import SearchContext from '../../context/SearchContext';
 
 export default function Meals() {
-  const { resultsSearch } = useContext(SearchContext);
+  const { resultsMealSearch } = useContext(SearchContext);
   return (
     <ul>
-      {resultsSearch.map((infoSearch) => (
+      {resultsMealSearch?.map((infoSearch) => (
         <li key={ infoSearch.idMeal }>
           <img
             src={ infoSearch.strMealThumb }

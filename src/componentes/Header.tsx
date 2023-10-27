@@ -30,11 +30,8 @@ function Header() {
     case '/done-recipes':
       titlePage = 'Done Recipes';
       break;
-    case '/favorite-recipes':
-      titlePage = 'Favorite Recipes';
-      break;
     default:
-      titlePage = 'Not Found';
+      titlePage = 'Favorite Recipes';
   }
   return (
     <header>

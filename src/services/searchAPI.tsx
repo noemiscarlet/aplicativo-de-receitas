@@ -3,15 +3,12 @@ export function mealsOrDrinks() {
   const END_POINT_MEALS = 'https://www.themealdb.com/api/json/v1/1/';
   const END_POINT_DRINKS = 'https://www.thecocktaildb.com/api/json/v1/1/';
 
-  switch (window.location.pathname) {
-    case '/meals':
+  switch (window.location.pathname.includes('/meals')) {
+    case true:
       END_POINT = END_POINT_MEALS;
       break;
-    case '/drinks':
-      END_POINT = END_POINT_DRINKS;
-      break;
     default:
-      return false;
+      END_POINT = END_POINT_DRINKS;
   }
   return END_POINT;
 }

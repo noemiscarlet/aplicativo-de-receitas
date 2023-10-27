@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SearchContext from './SearchContext';
 import { searchFirstLetter,
   searchIngredient,
@@ -11,10 +11,26 @@ type SearchProviderProps = {
 
 function SearchProvider({ children }: SearchProviderProps) {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [searchType, setSearchType] = useState('ingredient');
   const [searchText, setSearchText] = useState('');
   const [resultsMealSearch, setResultsMealSearch] = useState([]);
   const [resultsDrinkSearch, setResultsDrinkSearch] = useState([]);
+
+  useEffect(() => {
+    const fechEmptyNames = async () => {
+      if (pathname === ('/meals')) {
+        const recipeStd = await searchName('');
+        const recipeslice = recipeStd.meals?.slice(0, 12);
+        setResultsMealSearch(recipeslice);
+      } else if (pathname === ('/drinks')) {
+        const recipeStd = await searchName('');
+        const recipeslice = recipeStd.drinks?.slice(0, 12);
+        setResultsDrinkSearch(recipeslice);
+      }
+    };
+    fechEmptyNames();
+  }, [pathname]);
 
   const handleSearch = async () => {
     let functionsSearch;

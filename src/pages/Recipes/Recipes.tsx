@@ -40,14 +40,15 @@ export default function Recipes() {
       if (recipeType === 'meals') {
         const recipe = resultsMealSearch?.slice(0, 12);
         console.log(recipe);
-        if (recipe.length === 0) {
+        if (recipe?.length === 0) {
           const recipeStd = await searchName('');
-          const recipeslice = recipeStd?.slice(0, 12);
-          setMealList(recipeslice);
+          const newRecipeStd = Array.from(new Set([recipeStd.meals]));
+          const recipeslice = newRecipeStd?.slice(0, 12);
+          setMealList(recipeslice || []);
         }
-        setMealList(recipe);
+        setMealList(recipe || []);
         const category = data.meals?.slice(0, 5);
-        setCategoryList(category);
+        setCategoryList(category || []);
       } else {
         const recipe = resultsDrinkSearch?.slice(0, 12);
         setDrinkList(recipe);

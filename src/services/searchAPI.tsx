@@ -54,3 +54,24 @@ export async function searchName(nome: string) {
     console.log(err);
   }
 }
+
+export async function searchCategory(category: string) {
+  const END_POINT = mealsOrDrinks();
+  try {
+    const response = await
+    fetch(`${END_POINT}filter.php?c=${category}`);
+    const data = await response.json();
+    console.log('meu data', data);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function searchAllCategory() {
+  const END_POINT = mealsOrDrinks();
+  const response = await fetch(`${END_POINT}list.php?c=list`);
+  const data = await response.json();
+  console.log('meu data', data);
+  return data;
+}

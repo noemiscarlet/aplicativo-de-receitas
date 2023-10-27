@@ -42,6 +42,7 @@ export default function Recipes() {
         console.log(recipe);
         if (recipe?.length === 0) {
           const recipeStd = await searchName('');
+          // console.log();
           const newRecipeStd = Array.from(new Set([recipeStd.meals]));
           const recipeslice = newRecipeStd?.slice(0, 12);
           setMealList(recipeslice || []);

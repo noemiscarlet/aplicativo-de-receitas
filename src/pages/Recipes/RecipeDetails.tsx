@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
-import { apiDrinkId, apiFoodId } from '../../Services/API';
+import { useParams } from 'react-router-dom';
+import { apiId } from '../../Services/API';
 
 function RecipeDetails() {
+  const { id } = useParams();
   useEffect(() => {
-    apiDrinkId(178319);
-    apiFoodId(52771);
+    if (typeof (id) !== 'undefined') {
+      apiId(id);
+    }
   }, []);
 
   return (<h2> Recipe Details</h2>);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { apiId } from '../../services/API';
+import { apiId } from '../../Services/API';
 import { DrinksCardType, MealsCardType } from '../../types/types';
 
 function RecipeDetails() {

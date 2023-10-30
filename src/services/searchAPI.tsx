@@ -22,7 +22,7 @@ export async function searchIngredient(ingrediente: string) {
     console.log('meu data', data);
     return data;
   } catch (err) {
-    console.log(err);
+    console.log('This is an error : ', err);
   }
 }
 

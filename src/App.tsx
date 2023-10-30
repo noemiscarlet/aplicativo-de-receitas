@@ -8,8 +8,7 @@ import Profile from './pages/Profile/Profile';
 import Drinks from './pages/Drinks/Drinks';
 import RecipeDetails from './pages/Recipes/RecipeDetails';
 import DoneRecipes from './pages/Recipes/DoneRecipes';
-import FavoriteRecipes from './pages/Recipes/FavoriteRecipes';
-import NotFound from './pages/NotFound';
+import FavoriteRecipes from './pages/Favorite Recipes/FavoriteRecipes';
 
 function App() {
   return (

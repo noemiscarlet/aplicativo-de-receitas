@@ -5,7 +5,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './componentes/Layout';
 import Profile from './pages/Profile/Profile';
-import Drinks from './pages/Drinks/Drinks';
 import RecipeDetails from './pages/Recipes/RecipeDetails';
 import DoneRecipes from './pages/Recipes/DoneRecipes';
 import FavoriteRecipes from './pages/Recipes/FavoriteRecipes';
@@ -25,9 +24,9 @@ function App() {
         <Route path="/meals/:id" element={ <RecipeDetails /> } />
         <Route path="/drinks/:id" element={ <RecipeDetails /> } />
         {/* <Route path="/meals/:id-da-receita" element={ <RecipeDetails /> } /> */}
-        <Route path="/meals/:id-da-receita/in-progress" element={ <Recipes /> } />
+        {/* <Route path="/meals/:id-da-receita/in-progress" element={ <Recipes /> } /> */}
         {/* <Route path="/drinks/:id-da-receita" element={ <Drinks /> } /> */}
-        <Route path="/drinks/:id-da-receita/in-progress" element={ <Drinks /> } />
+        {/* <Route path="/drinks/:id-da-receita/in-progress" element={ <Drinks /> } /> */}
       </Routes>
     </div>
   );

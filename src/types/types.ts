@@ -4,12 +4,14 @@ export interface FormData {
 }
 
 export type MealsCardType = {
+  [ key: string ]: number | string,
   idMeal: number,
   strMealThumb: string,
   strMeal: string,
 };
 
 export type DrinksCardType = {
+  [ key: string ]: number | string,
   idDrink: number,
   strDrinkThumb: string,
   strDrink: string,
@@ -20,11 +22,11 @@ export type CategoryTypes = {
 };
 
 export type ContextSearch = {
-  searchText: string,
-  setSearchText: React.Dispatch<React.SetStateAction<string>>,
-  searchType: string,
-  setSearchType: React.Dispatch<React.SetStateAction<string>>,
-  handleSearch: () => Promise<void>,
+  handleSearch: (search: SearchState) => Promise<void>,
   resultsMealSearch: MealsCardType[],
   resultsDrinkSearch: DrinksCardType[],
+};
+export type SearchState = {
+  searchText: string,
+  searchType: string
 };

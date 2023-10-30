@@ -5,39 +5,36 @@ import { searchAllCategory, searchCategory, searchName } from '../../services/se
 import SearchContext from '../../context/SearchContext';
 import { Footer } from '../../componentes/Footer/Footer';
 
-type RecipeType = 'meals' | 'drinks';
+type RecipeType = 'Meal' | 'Drink';
+type ListType = DrinksCardType[] | MealsCardType [];
 
 export default function Recipes() {
   const location = useLocation();
   const { resultsMealSearch, resultsDrinkSearch } = useContext(SearchContext);
-  const [recipeType, setRecipeType] = useState<RecipeType>();
-  const [mealList, setMealList] = useState<MealsCardType[]>([]);
-  const [drinkList, setDrinkList] = useState<DrinksCardType[]>([]);
-  const [categoryList, setCategoryList] = useState<CategoryTypes []>([{
-    strCategory: '',
-  }]);
+  const [recipeType, setRecipeType] = useState<RecipeType>('Meal');
+  const [list, setList] = useState<ListType>([]);
+  const [categoryList, setCategoryList] = useState<CategoryTypes []>([]);
   const [selectedCategory, setSelectedCategory] = useState<CategoryTypes>({
     strCategory: '',
   });
   useEffect(() => {
     if (location.pathname.includes('/meals')) {
-      setRecipeType('meals');
+      setRecipeType('Meal');
     } else {
-      setRecipeType('drinks');
+      setRecipeType('Drink');
     }
   }, [location.pathname]);
   useEffect(() => {
     const fetchRecipes = async () => {
       const data = await searchAllCategory();
-      if (recipeType === 'meals') {
+      if (recipeType === 'Meal') {
         const recipe = resultsMealSearch?.slice(0, 12);
-        console.log(recipe);
-        setMealList(recipe);
+        setList(recipe);
         const category = data.meals?.slice(0, 5);
         setCategoryList(category);
       } else {
         const recipe = resultsDrinkSearch?.slice(0, 12);
-        setDrinkList(recipe);
+        setList(recipe);
         const category = data.drinks?.slice(0, 5);
         setCategoryList(category);
       }
@@ -46,72 +43,28 @@ export default function Recipes() {
   }, [recipeType, resultsDrinkSearch, resultsMealSearch]);
 
   const handleFilter = async (category: CategoryTypes) => {
-    if (recipeType === 'meals') {
+    if (recipeType === 'Meal') {
       if (category.strCategory === selectedCategory.strCategory) {
         const recipe = resultsMealSearch?.slice(0, 12);
-        setMealList(recipe);
+        setList(recipe);
+        setSelectedCategory({ strCategory: '' });
       } else {
         setSelectedCategory(category);
         const filterList = await searchCategory(category.strCategory);
         const filterMeals = filterList.meals?.slice(0, 12);
-        setMealList(filterMeals);
+        setList(filterMeals);
       }
     } else if (category.strCategory === selectedCategory.strCategory) {
       const recipe = resultsDrinkSearch?.slice(0, 12);
-      setDrinkList(recipe);
+      setList(recipe);
+      setSelectedCategory({ strCategory: '' });
     } else {
       setSelectedCategory(category);
       const filterList = await searchCategory(category.strCategory);
       const filterDrinks = filterList.drinks?.slice(0, 12);
-      setDrinkList(filterDrinks);
+      setList(filterDrinks);
     }
   };
-  if (recipeType === 'meals') {
-    return (
-      <div>
-        <div>
-          {categoryList?.map((category) => {
-            return (
-              <button
-                data-testid={ `${category.strCategory}-category-filter` }
-                onClick={ () => handleFilter(category) }
-                key={ category.strCategory }
-              >
-                {category.strCategory}
-
-              </button>
-            );
-          })}
-          <button
-            data-testid="All-category-filter"
-            onClick={ () => handleFilter(selectedCategory) }
-          >
-            All Category
-          </button>
-        </div>
-        <div>
-          { mealList?.map((recipe, i) => {
-            return (
-              <Link
-                key={ recipe.idMeal }
-                to={ `/meals/${recipe.idMeal}` }
-                data-testid={ `${i}-recipe-card` }
-              >
-                <img
-                  data-testid={ `${i}-card-img` }
-                  src={ recipe.strMealThumb }
-                  alt={ recipe.strMeal }
-                  style={ { width: '150px' } }
-                />
-                <p data-testid={ `${i}-card-name` }>{recipe.strMeal}</p>
-              </Link>
-            );
-          })}
-        </div>
-        <Footer />
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -134,20 +87,25 @@ export default function Recipes() {
         All Category
       </button>
       <div>
-        {drinkList?.map((recipe, i) => {
+        {list?.map((recipe, i) => {
           return (
             <Link
-              key={ recipe.idDrink }
-              to={ `/drinks/${recipe.idDrink}` }
+              key={ recipe[`id${recipeType}`] }
+              to={ `/drinks/${recipe[`id${recipeType}`]}` }
               data-testid={ `${i}-recipe-card` }
             >
               <img
                 data-testid={ `${i}-card-img` }
-                src={ recipe.strDrinkThumb }
-                alt={ recipe.strDrink }
+                src={ recipe[`str${recipeType}Thumb`] as string }
+                alt={ recipe[`str${recipeType}`] as string }
                 style={ { width: '150px' } }
               />
-              <p data-testid={ `${i}-card-name` }>{recipe.strDrink}</p>
+              <p
+                data-testid={ `${i}-card-name` }
+              >
+                {recipe[`str${recipeType}`] as string}
+
+              </p>
             </Link>
 
           );

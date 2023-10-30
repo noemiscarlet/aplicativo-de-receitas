@@ -9,7 +9,6 @@ import Drinks from './pages/Drinks/Drinks';
 import RecipeDetails from './pages/Recipes/RecipeDetails';
 import DoneRecipes from './pages/Recipes/DoneRecipes';
 import FavoriteRecipes from './pages/Recipes/FavoriteRecipes';
-import NotFound from './pages/NotFound';
 
 function App() {
   return (

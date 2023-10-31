@@ -80,7 +80,7 @@ describe('testando recipes req 19-23 meals', async () => {
         await user.click(category);
         const fetch = await searchCategory(`${category.innerHTML}`);
         checkRecipes(fetch);
-      }, 4000);
+      }, 3000);
       clearTimeout(categoryTimer);
     });
   });
@@ -174,11 +174,14 @@ describe('testando recipes req 19-23 drinks', async () => {
         </SearchProvider>
       </BrowserRouter>,
     );
-    CategoryDrinkbuttons.forEach(async (category) => {
-      await user.click(category);
-      const fetch = await searchCategory(`${category.innerHTML}`);
-      checkRecipes(fetch);
-    });
+    const categoryTimer = setTimeout(() => {
+      CategoryDrinkbuttons.forEach(async (category) => {
+        await user.click(category);
+        const fetch = await searchCategory(`${category.innerHTML}`);
+        checkRecipes(fetch);
+      });
+    }, 3000);
+    clearTimeout(categoryTimer);
   });
   test('testa o recipes padrão Drinks', async () => {
     render(
@@ -199,11 +202,14 @@ describe('testando recipes req 19-23 drinks', async () => {
         </SearchProvider>
       </BrowserRouter>,
     );
-    const allCategoryBtn = await screen.findByTestId(AllCategoryBtn);
-    await user.click(CategoryDrinkbuttons[0]);
-    await user.click(allCategoryBtn);
-    const fetchStd = await searchName('');
-    checkRecipes(fetchStd);
+    const categoryTimer = setTimeout(async () => {
+      const allCategoryBtn = await screen.findByTestId(AllCategoryBtn);
+      await user.click(CategoryDrinkbuttons[0]);
+      await user.click(allCategoryBtn);
+      const fetchStd = await searchName('');
+      checkRecipes(fetchStd);
+    }, 3000);
+    clearTimeout(categoryTimer);
   });
   test('testa todos alll category btn', async () => {
     render(

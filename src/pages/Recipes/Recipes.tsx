@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { NavLink, useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { CategoryTypes, DrinksCardType, MealsCardType } from '../../types/types';
-import { searchAllCategory, searchCategory, searchName } from '../../services/searchAPI';
+import { searchAllCategory, searchCategory } from '../../services/searchAPI';
 import SearchContext from '../../context/SearchContext';
 import { Footer } from '../../componentes/Footer/Footer';
 

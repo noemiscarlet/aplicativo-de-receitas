@@ -4,8 +4,8 @@ export interface FormData {
 }
 
 export type MealsCardType = {
-  [ key: string ]: number | string,
-  idMeal: number,
+  [ key: string ]: string,
+  idMeal: string,
   strMealThumb: string,
   strMeal: string,
 };

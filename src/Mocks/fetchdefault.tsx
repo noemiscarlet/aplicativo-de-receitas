@@ -60,6 +60,12 @@ export const mealsFetch = [
     strMeal: 'Pancakes',
     strMealThumb: 'https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg',
   },
+  {
+    idMeal: '52887',
+    strMeal: 'Kedgeree',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg',
+
+  },
 ];
 export const drinksFetch = [
   {

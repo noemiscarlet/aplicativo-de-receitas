@@ -63,7 +63,34 @@ export const beefFetch = [{
   strMealThumb: 'https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg',
   idMeal: '52826',
 }];
-
+export const breakfast = [
+  {
+    strMeal: 'Breakfast Potatoes',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/1550441882.jpg',
+    idMeal: '52965',
+  },
+];
+export const chicken = [
+  {
+    strMeal: 'Brown Stew Chicken',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg',
+    idMeal: '52940',
+  },
+];
+export const dessert = [
+  {
+    strMeal: 'Apple & Blackberry Crumble',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    idMeal: '52893',
+  },
+];
+export const goat = [
+  {
+    strMeal: 'Mbuzi Choma (Roasted Goat)',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg',
+    idMeal: '52968',
+  },
+];
 export const ordinaryDrinkFetch = [{
   strDrink: '3-Mile Long Island Iced Tea',
   strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/rrtssw1472668972.jpg',
@@ -124,3 +151,31 @@ export const ordinaryDrinkFetch = [{
   strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/smb2oe1582479072.jpg',
   idDrink: '17835',
 }];
+export const cocktail = [
+  {
+    strDrink: '\'57 Chevy with a White License Plate',
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/qyyvtu1468878544.jpg',
+    idDrink: '14029',
+  },
+];
+export const shake = [
+  {
+    strDrink: '151 Florida Bushwacker',
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/rvwrvv1468877323.jpg',
+    idDrink: '14588',
+  },
+];
+export const other = [
+  {
+    strDrink: 'A Piece of Ass',
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqxyxx1472719737.jpg',
+    idDrink: '16405',
+  },
+];
+export const cocoa = [
+  {
+    strDrink: 'Castillian Hot Chocolate',
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/3nbu4a1487603196.jpg',
+    idDrink: '12730',
+  },
+];

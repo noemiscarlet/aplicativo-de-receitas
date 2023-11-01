@@ -24,6 +24,12 @@ export default function Recipes() {
       setRecipeType('Drink');
     }
   }, [location.pathname]);
+  const recipeCheck = (recipe: MealsCardType | DrinksCardType) => {
+    if (recipeType === 'Meal') {
+      return `/meals/${recipe[`id${recipeType}`]}`;
+    }
+    return `/drinks/${recipe[`id${recipeType}`]}`;
+  };
   useEffect(() => {
     const fetchRecipes = async () => {
       const data = await searchAllCategory();
@@ -91,7 +97,7 @@ export default function Recipes() {
           return (
             <Link
               key={ recipe[`id${recipeType}`] }
-              to={ `/drinks/${recipe[`id${recipeType}`]}` }
+              to={ recipeCheck(recipe) }
               data-testid={ `${i}-recipe-card` }
             >
               <img

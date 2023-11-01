@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { afterEach, vi } from 'vitest';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { CategoryTypes, MealsCardType } from '../types/types';
 import SearchProvider from '../context/SearchProvider';
@@ -9,7 +9,6 @@ import { fetchCategoriesMeals, fetchCategoryListMeals, fetchDefaultMeals } from 
 import * as search from '../services/searchAPI';
 import { mealsFetch } from '../Mocks/fetchdefault';
 import { beefFetch } from '../Mocks/fetchCategory';
-import Recipes from '../pages/Recipes/Recipes';
 
 const mealsRoute = '/meals';
 
@@ -39,11 +38,11 @@ describe('testando recipes req 19-23 meals', async () => {
   });
   test('testa category button', async () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={ [mealsRoute] }>
         <SearchProvider>
-          <Recipes />
+          <App />
         </SearchProvider>
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
     const mealsButton = screen.getByTestId(footerBtn);
@@ -59,11 +58,11 @@ describe('testando recipes req 19-23 meals', async () => {
   });
   test('testa All Category btn', async () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={ [mealsRoute] }>
         <SearchProvider>
-          <Recipes />
+          <App />
         </SearchProvider>
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
     const mealsButton = screen.getByTestId(footerBtn);
@@ -78,11 +77,11 @@ describe('testando recipes req 19-23 meals', async () => {
   });
   test('testa category beef', async () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={ [mealsRoute] }>
         <SearchProvider>
-          <Recipes />
+          <App />
         </SearchProvider>
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
     const mealsButton = screen.getByTestId(footerBtn);
@@ -98,11 +97,11 @@ describe('testando recipes req 19-23 meals', async () => {
   });
   test('testa todos alll category btn', async () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={ [mealsRoute] }>
         <SearchProvider>
-          <Recipes />
+          <App />
         </SearchProvider>
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
     const mealsButton = screen.getByTestId(footerBtn);
@@ -119,11 +118,11 @@ describe('testando recipes req 19-23 meals', async () => {
   });
   test('testa o recipes padrão meals', async () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={ [mealsRoute] }>
         <SearchProvider>
-          <Recipes />
+          <App />
         </SearchProvider>
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
     const mealsButton = screen.getByTestId(footerBtn);

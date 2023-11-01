@@ -19,7 +19,6 @@ export async function searchIngredient(ingrediente: string) {
     const response = await
     fetch(`${END_POINT}filter.php?i=${ingrediente}`);
     const data = await response.json();
-    console.log('meu data', data);
     return data;
   } catch (err) {
     console.log('This is an error : ', err);
@@ -32,7 +31,6 @@ export async function searchFirstLetter(primeiraletra: string) {
     const response = await
     fetch(`${END_POINT}search.php?f=${primeiraletra}`);
     const data = await response.json();
-    console.log('meu data', data);
     return data;
   } catch (err) {
     console.log(err);
@@ -45,7 +43,6 @@ export async function searchName(nome: string) {
     const response = await
     fetch(`${END_POINT}search.php?s=${nome}`);
     const data = await response.json();
-    console.log('meu data', data);
     return data;
   } catch (err) {
     console.log(err);
@@ -58,7 +55,6 @@ export async function searchCategory(category: string) {
     const response = await
     fetch(`${END_POINT}filter.php?c=${category}`);
     const data = await response.json();
-    console.log('meu data', data);
     return data;
   } catch (err) {
     console.log(err);
@@ -69,6 +65,5 @@ export async function searchAllCategory() {
   const END_POINT = mealsOrDrinks();
   const response = await fetch(`${END_POINT}list.php?c=list`);
   const data = await response.json();
-  console.log('meu data', data);
   return data;
 }

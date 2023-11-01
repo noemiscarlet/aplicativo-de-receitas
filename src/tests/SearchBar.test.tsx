@@ -5,9 +5,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import App from '../App';
 import { fetchSearchName } from '../Mocks/fetch';
 import SearchProvider from '../context/SearchProvider';
-import { DrinksCardType } from '../types/types';
+import { DrinksCardType, MealsCardType } from '../types/types';
 import * as search from '../services/searchAPI';
 import Recipes from '../pages/Recipes/Recipes';
+import { soup } from '../Mocks/FetchSearchName';
 
 const searchTopBtn = 'search-top-btn';
 const execBtn = 'exec-search-btn';
@@ -48,19 +49,18 @@ describe('searchBar', async () => {
     await user.click(searchRadio);
     const execSerch = screen.getByTestId(execBtn);
     await user.click(execSerch);
-    const fetch = await search.searchName('');
-    console.log('fetch', fetch);
-    fetch.meals.forEach(async (meal:DrinksCardType, i: number) => {
+    const fetch = { meals: soup };
+    fetch.meals.forEach(async (meal:MealsCardType, i: number) => {
       const card = await screen.findByTestId(`${i}-recipe-card`);
       expect(card).toBeInTheDocument();
-      expect(card).toHaveAttribute('href', `/meals${meal.idDrink}`);
+      expect(card).toHaveAttribute('href', `/meals${meal.idMeal}`);
       const img = await screen.findByTestId(`${i}-card-img`);
       expect(img).toBeInTheDocument();
-      expect(img).toHaveAttribute('src', meal.strDrinkThumb);
-      expect(img).toHaveAttribute('alt', meal.strDrink);
+      expect(img).toHaveAttribute('src', meal.strMealThumb);
+      expect(img).toHaveAttribute('alt', meal.strMeal);
       const mealName = await screen.findByTestId(`${i}-card-name`);
       expect(mealName).toBeInTheDocument();
-      expect(mealName).toHaveTextContent(meal.strDrink);
+      expect(mealName).toHaveTextContent(meal.strMeal);
     });
   });
 });

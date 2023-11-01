@@ -9,7 +9,7 @@ type RecipeType = 'Meal' | 'Drink';
 type ListType = DrinksCardType[] | MealsCardType [];
 
 export default function Recipes() {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const { resultsMealSearch, resultsDrinkSearch } = useContext(SearchContext);
   const [recipeType, setRecipeType] = useState<RecipeType>('Meal');
   const [list, setList] = useState<ListType>([]);
@@ -18,12 +18,12 @@ export default function Recipes() {
     strCategory: '',
   });
   useEffect(() => {
-    if (location.pathname.includes('/meals')) {
+    if (pathname.includes('/meals')) {
       setRecipeType('Meal');
     } else {
       setRecipeType('Drink');
     }
-  }, [location.pathname]);
+  }, [pathname]);
   const recipeCheck = (recipe: MealsCardType | DrinksCardType) => {
     if (recipeType === 'Meal') {
       return `/meals/${recipe[`id${recipeType}`]}`;

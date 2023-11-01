@@ -7,7 +7,7 @@ import Layout from './componentes/Layout';
 import Profile from './pages/Profile/Profile';
 import RecipeDetails from './pages/Recipes/RecipeDetails';
 import DoneRecipes from './pages/Recipes/DoneRecipes';
-import FavoriteRecipes from './pages/Recipes/FavoriteRecipes';
+import FavoriteRecipes from './pages/Favorite Recipes/FavoriteRecipes';
 
 function App() {
   return (

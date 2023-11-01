@@ -8,6 +8,7 @@ export type MealsCardType = {
   idMeal: number,
   strMealThumb: string,
   strMeal: string,
+  strInstructions: string
 };
 
 export type DrinksCardType = {
@@ -15,6 +16,7 @@ export type DrinksCardType = {
   idDrink: number,
   strDrinkThumb: string,
   strDrink: string,
+  strInstructions: string,
 };
 
 export type CategoryTypes = {

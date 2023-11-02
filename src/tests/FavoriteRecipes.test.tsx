@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import FavoriteRecipes from '../pages/Favorite Recipes/FavoriteRecipes';
+import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
 
 const NAME_TEST_ID = '0-horizontal-name';
 const NAME_TEST_ID1 = '1-horizontal-name';

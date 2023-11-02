@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import shareIcon from '../../images/shareIcon.svg';
 
-type DoneRecipes = {
+type DoneRecipesType = {
   id: string,
   type: string,
   nationality: string,
@@ -18,7 +18,7 @@ type Filter = 'all' | 'meal' | 'drink';
 
 function DoneRecipes() {
   // estado para armazenar os dados recebidos pelo localStorage
-  const [recipesMade, setRecipesMade] = useState<DoneRecipes[]>([]);
+  const [recipesMade, setRecipesMade] = useState<DoneRecipesType[]>([]);
   const [copyStates, setCopyStates] = useState(Array(recipesMade.length).fill(false));
   const [filterType, setFiltertype] = useState<Filter>('all');
 

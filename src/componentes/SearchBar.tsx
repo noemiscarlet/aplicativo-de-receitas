@@ -51,7 +51,7 @@ function SearchBar() {
       </label>
       <button
         data-testid="exec-search-btn"
-        onClick={ handleSearch }
+        onClick={ () => handleSearch }
       >
         Search
       </button>

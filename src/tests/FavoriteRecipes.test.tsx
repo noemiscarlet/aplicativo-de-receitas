@@ -1,7 +1,10 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { vi } from 'vitest';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
+import App from '../App';
+import renderWithRouter from './renderWithRouter';
 
 const NAME_TEST_ID = '0-horizontal-name';
 const NAME_TEST_ID1 = '1-horizontal-name';
@@ -12,11 +15,7 @@ describe('FavoriteRecipes', () => {
   });
 
   test('should render "Favorite Recipes" title', () => {
-    render(
-      <BrowserRouter>
-        <FavoriteRecipes />
-      </BrowserRouter>,
-    );
+    renderWithRouter(<App />, { route: '/favorite-recipes' });
     expect(screen.getByText('Favorite Recipes')).toBeInTheDocument();
   });
 
@@ -83,5 +82,36 @@ describe('FavoriteRecipes', () => {
     fireEvent.click(screen.getByTestId('filter-by-drink-btn'));
     expect(screen.queryByTestId(NAME_TEST_ID1)).not.toBeInTheDocument();
     expect(screen.getByTestId(NAME_TEST_ID)).toBeInTheDocument();
+  });
+  test('teste remove favorite', () => {
+    const recipe1 = { id: 1, name: 'Recipe 1', type: 'meal', image: '', category: '', nationality: '', alcoholicOrNot: '' };
+    const recipe2 = { id: 2, name: 'Recipe 2', type: 'drink', image: '', category: '', nationality: '', alcoholicOrNot: '' };
+    localStorage.setItem('favoriteRecipes', JSON.stringify([recipe1, recipe2]));
+
+    render(
+      <BrowserRouter>
+        <FavoriteRecipes />
+      </BrowserRouter>,
+    );
+    expect(screen.getByTestId(NAME_TEST_ID)).toBeInTheDocument();
+    expect(screen.getByTestId(NAME_TEST_ID1)).toBeInTheDocument();
+    const removeBtn = screen.getByTestId('1-horizontal-favorite-btn');
+    fireEvent.click(removeBtn);
+    expect(screen.queryByTestId(NAME_TEST_ID1)).toBeNull();
+  });
+  test('teste clipboard writeText', () => {
+    const recipe1 = { id: 1, name: 'Recipe 1', type: 'meal', image: '', category: '', nationality: '', alcoholicOrNot: '' };
+    localStorage.setItem('favoriteRecipes', JSON.stringify([recipe1]));
+    const writeText = vi.spyOn(navigator.clipboard, 'writeText');
+
+    render(
+      <BrowserRouter>
+        <FavoriteRecipes />
+      </BrowserRouter>,
+    );
+    expect(screen.getByTestId(NAME_TEST_ID)).toBeInTheDocument();
+    const shareBtn = screen.getByTestId('0-horizontal-share-btn');
+    fireEvent.click(shareBtn);
+    expect(writeText).toHaveBeenCalledTimes(1);
   });
 });

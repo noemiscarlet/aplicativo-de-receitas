@@ -65,7 +65,6 @@ function FavoriteRecipes() {
 
   return (
     <div>
-      <span>Favorite Recipes</span>
       <div>
         <button
           onClick={ () => handleFilterChange('all') }

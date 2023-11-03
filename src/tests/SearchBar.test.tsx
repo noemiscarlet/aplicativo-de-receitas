@@ -1,25 +1,16 @@
 import userEvent from '@testing-library/user-event';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from '../App';
 import { fetchSearchName } from '../Mocks/fetch';
 import SearchProvider from '../context/SearchProvider';
-import { DrinksCardType, MealsCardType } from '../types/types';
+import { MealsCardType } from '../types/types';
 import * as search from '../services/searchAPI';
-import Recipes from '../pages/Recipes/Recipes';
 import { soup } from '../Mocks/FetchSearchName';
 
-const searchTopBtn = 'search-top-btn';
 const execBtn = 'exec-search-btn';
 const seachInputBtn = 'search-input';
-const EMAIL_INPUT = 'email-input';
-const PASSWORD_INPUT = 'password-input';
-const EMAIL_VALUE = 'xablau@xablau.com';
-const EMAIL_VALUE_NOT_OK = 'xablau';
-const PASSWORD_VALUE = '1234567';
-const PASSWORD_VALUE_NOT_OK = '1237';
-const BTN_ENTER = 'login-submit-btn';
 describe('searchBar', async () => {
   beforeEach(() => {
     vi.clearAllMocks();

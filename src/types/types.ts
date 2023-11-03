@@ -8,7 +8,6 @@ export type MealsCardType = {
   idMeal: string,
   strMealThumb: string,
   strMeal: string,
-  strInstructions: string
 };
 
 export type DrinksCardType = {
@@ -27,6 +26,10 @@ export type ContextSearch = {
   handleSearch: (search: SearchState) => Promise<void>,
   resultsMealSearch: MealsCardType[],
   resultsDrinkSearch: DrinksCardType[],
+  setSearchType: React.Dispatch<React.SetStateAction<string>>,
+  searchType: string,
+  searchText: string,
+  setSearchText: React.Dispatch<React.SetStateAction<string>>,
 };
 export type SearchState = {
   searchText: string,

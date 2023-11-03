@@ -44,7 +44,7 @@ function ButtonStartRecipe() {
       }
     }
     requestIdApi();
-  }, []);
+  }, [idDaReceita, pathname]);
   function Navigate() {
     if (pathname.includes('/meals') && startOrContinue === start) {
       localStorage.setItem('inProgressRecipes', JSON.stringify({

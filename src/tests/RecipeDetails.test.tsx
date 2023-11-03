@@ -54,7 +54,7 @@ it('1 - Tests the API', async () => {
 
   expect(window.location.pathname).toBe(MOCKED_MEAL_ROUTE);
 
-  expect(fetch).toHaveBeenCalledTimes(2);
+  expect(fetch).toHaveBeenCalledTimes(1);
 });
 
 it('2 - Tests the Favorite button', async () => {

@@ -5,11 +5,9 @@ import './index.css';
 import SearchProvider from './context/SearchProvider';
 
 ReactDOM.createRoot(document.getElementById('root') as Element).render(
-
   <BrowserRouter>
     <SearchProvider>
       <App />
     </SearchProvider>
   </BrowserRouter>,
-
 );

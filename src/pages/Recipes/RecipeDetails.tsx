@@ -86,7 +86,7 @@ function RecipeDetails() {
       }
     };
     reqApiRecipe();
-  });
+  }, []);
 
   const {
     img, title, ingredients, category, instructions, video, alcoholic } = currentRecipe;

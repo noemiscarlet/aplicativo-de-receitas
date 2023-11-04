@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import clipboardCopy from 'clipboard-copy';
-import share from '../../images/shareIcon.svg';
 import { SearchDrinksById } from '../../Services/getDrink';
 import { SearchMealsById } from '../../Services/getFood';
 import { setMeals, setDrinks } from '../../Services/helperMealsDrinks';
 import { CurrentRecipeType, DoneRecipesTypes } from '../../types/types';
 import ShareButton from '../../componentes/Buttons/ShareButton';
+import FavoriteButton from '../../componentes/Buttons/FavoriteButton';
 
 function RecipeInProgress() {
   const navigate = useNavigate();
@@ -72,7 +72,7 @@ function RecipeInProgress() {
         });
       }
     }reqApi();
-  }, [arrayNumbers, idDaReceita, pathname]);
+  }, [idDaReceita, pathname]);
 
   useEffect(() => {
     async function reqApiDrinks() {
@@ -222,14 +222,7 @@ function RecipeInProgress() {
       <ShareButton
         data-testid="'favorite-btn'"
       />
-      {/* button compartilhar */}
-      <button
-        data-testid="share-btn"
-        onClick={ () => CopyMessage() }
-      >
-        {linkCopy && <h3>Link copied!</h3>}
-        <img src={ share } alt="compartilhar" />
-      </button>
+      <FavoriteButton idDaReceita={ idDaReceita } pathName={ pathname } />
     </div>
   );
 }

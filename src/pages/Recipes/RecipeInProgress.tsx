@@ -7,6 +7,7 @@ import { setMeals, setDrinks } from '../../Services/helperMealsDrinks';
 import { CurrentRecipeType, DoneRecipesTypes } from '../../types/types';
 import ShareButton from '../../componentes/Buttons/ShareButton';
 import FavoriteButton from '../../componentes/Buttons/FavoriteButton';
+import CheckBox from '../../componentes/Buttons/CheckBox';
 
 function RecipeInProgress() {
   const navigate = useNavigate();
@@ -193,22 +194,14 @@ function RecipeInProgress() {
 
       <h3 data-testid="recipe-category">{category}</h3>
       {ingredients?.map((ingredient, index) => (
-        <div
+        <CheckBox
+          arrayIngredients={ arrayIngredients }
+          pathname={ pathname }
+          index={ index }
+          ingredient={ ingredient }
+          check={ () => check(ingredient) }
           key={ index }
-          data-testid={ `${index}-ingredient-name-and-measure` }
-        >
-          <label
-            className={ arrayIngredients.includes(ingredient) ? 'container' : 'checkIn' }
-            data-testid={ `${index}-ingredient-step` }
-          >
-            <input
-              checked={ arrayIngredients.includes(ingredient) }
-              onChange={ () => check(ingredient) }
-              type="checkbox"
-            />
-            <span>{ingredient}</span>
-          </label>
-        </div>
+        />
       ))}
       <h3 data-testid="instructions">{instructions}</h3>
       <button

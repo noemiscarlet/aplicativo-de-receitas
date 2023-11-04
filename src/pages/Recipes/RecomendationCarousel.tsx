@@ -14,7 +14,7 @@ function RecomendationCarousel({ recomendation }: RecomendationCarouselProps) {
         ? recomendation?.slice(0, 6).map(({ strMeal, strMealThumb }:any, index) => (
           <div
             key={ index }
-            style={ { display: 'inline-block', width: '50%' } }
+            style={ { display: 'inline-block', width: '55%' } }
           >
             <h1
               data-testid={ `${index}-recommendation-title` }
@@ -35,13 +35,13 @@ function RecomendationCarousel({ recomendation }: RecomendationCarouselProps) {
         : recomendation?.slice(0, 6).map(({ strDrink, strDrinkThumb }:any, index) => (
           <div
             key={ index }
-            style={ { display: 'inline-block', width: '50%' } }
+            style={ { display: 'inline-block', width: '55%' } }
+            data-testid={ `${index}-recommendation-card` }
           >
             <h1 data-testid={ `${index}-recommendation-title` }>
               { strDrink }
             </h1>
             <img
-              data-testid={ `${index}-recommendation-card` }
               style={
               { width: '90%', height: 'auto' }
             }

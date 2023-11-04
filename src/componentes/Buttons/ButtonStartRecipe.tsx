@@ -75,6 +75,7 @@ function ButtonStartRecipe() {
           onClick={ Navigate }
           className="position"
           data-testid="start-recipe-btn"
+          style={ { position: 'fixed', bottom: 0, right: 0 } }
         >
           {startOrContinue}
         </button>

@@ -220,7 +220,7 @@ function RecipeInProgress() {
 
       </button>
       <ShareButton
-        data-testid="favorite-btn"
+        data-testid="'favorite-btn'"
       />
       {/* button compartilhar */}
       <button

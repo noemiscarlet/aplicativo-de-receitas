@@ -13,7 +13,7 @@ function RecipeDetails() {
   const { pathname } = useLocation();
   const [recomendation, setRecomendation] = useState<MealsCardType[]
   | DrinksCardType[]>([]);
-
+  console.log(recomendation);
   type CurrentRecipeType = {
     img: string,
     title: string,
@@ -37,11 +37,10 @@ function RecipeDetails() {
 
   useEffect(() => {
     const reqApiRecipe = async () => {
-      setRecomendation(await MealsFetch());
       if (pathname.includes('drink')) {
+        setRecomendation(await MealsFetch());
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDaReceita}`);
         const data = await response.json();
-        console.log(data.drinks[0]);
         const ingredientsArray: string[] = [];
         arrayNumbers.forEach((ele) => {
           if (data.drinks[0][`strIngredient${ele}`] !== null
@@ -62,7 +61,7 @@ function RecipeDetails() {
       }
 
       if (pathname.includes('meals')) {
-        await DrinksFetch();
+        setRecomendation(await DrinksFetch());
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idDaReceita}`);
         const data = await response.json();
         console.log(data.meals[0]);

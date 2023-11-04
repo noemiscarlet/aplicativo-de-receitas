@@ -9,34 +9,45 @@ function RecomendationCarousel({ recomendation }: RecomendationCarouselProps) {
   const { pathname } = useLocation();
 
   return (
-    <div className="carousel">
-      { pathname.includes('/meals')
-        ? recomendation?.slice(0, 6).map(({ strDrink, strDrinkThumb }:any, index) => (
+    <div className="carousel" style={ { overflowX: 'scroll', whiteSpace: 'nowrap' } }>
+      { pathname.includes('/drinks')
+        ? recomendation?.slice(0, 6).map(({ strMeal, strMealThumb }:any, index) => (
           <div
-            data-testid={ `${index}-recommendation-card` }
             key={ index }
+            style={ { display: 'inline-block', width: '50%' } }
           >
             <h1
               data-testid={ `${index}-recommendation-title` }
             >
-              { strDrink }
+              { strMeal }
             </h1>
             <img
-              src={ strDrinkThumb }
-              alt={ strDrink }
+              data-testid={ `${index}-recommendation-card` }
+              src={ strMealThumb }
+              alt={ strMeal }
+              style={
+                { width: '90%', height: 'auto' }
+              }
             />
           </div>
         ))
 
-        : recomendation?.slice(0, 6).map(({ strMeal, strMealThumb }:any, index) => (
+        : recomendation?.slice(0, 6).map(({ strDrink, strDrinkThumb }:any, index) => (
           <div
-            data-testid={ `${index}-recommendation-card` }
             key={ index }
+            style={ { display: 'inline-block', width: '50%' } }
           >
             <h1 data-testid={ `${index}-recommendation-title` }>
-              { strMeal }
+              { strDrink }
             </h1>
-            <img src={ strMealThumb } alt={ strMeal } />
+            <img
+              data-testid={ `${index}-recommendation-card` }
+              style={
+              { width: '90%', height: 'auto' }
+            }
+              src={ strDrinkThumb }
+              alt={ strDrink }
+            />
           </div>
         ))}
     </div>

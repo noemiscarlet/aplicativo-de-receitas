@@ -162,12 +162,6 @@ function RecipeInProgress() {
     }
   }
 
-  async function CopyMessage() {
-    const { protocol, host } = window.location;
-    setLinkCopy(true);
-    await copy(`${protocol}//${host}/${doneRecipe.type}s/${idDaReceita}`);
-  }
-
   function verification() {
     return arrayIngredients.length === ingredients.length;
   }

@@ -9,8 +9,14 @@ function ShareButton() {
   const copy = clipboardCopy;
 
   function CopyMessage() {
-    setLinkCopy(true);
-    copy(`http://localhost:3000${pathname}`);
+    if (pathname.includes('in-progress')) {
+      const [, item, id] = pathname.split('/');
+      copy(`http://localhost:3000/${item}/${id}`);
+      setLinkCopy(true);
+    } else {
+      setLinkCopy(true);
+      copy(`http://localhost:3000${pathname}`);
+    }
   }
 
   return (

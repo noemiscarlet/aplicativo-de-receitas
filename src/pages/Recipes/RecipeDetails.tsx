@@ -7,6 +7,7 @@ import FavoriteButton from '../../componentes/Buttons/FavoriteButton';
 // import ShareButton from '../../componentes/Buttons/ShareButton';
 import RecomendationCarousel from './RecomendationCarousel';
 import { DrinksCardType, MealsCardType } from '../../types/types';
+import ShareButton from '../../componentes/Buttons/ShareButton';
 
 function RecipeDetails() {
   const { idDaReceita } = useParams();
@@ -125,6 +126,7 @@ function RecipeDetails() {
         )}
         <RecomendationCarousel recomendation={ recomendation } />
         {/* <ShareButton /> */}
+        <ShareButton textToCopy={ `http://localhost:3000${pathname}` } />
         <FavoriteButton pathName={ pathname } idDaReceita={ idDaReceita } />
       </div>
       <div>

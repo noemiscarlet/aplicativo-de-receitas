@@ -1,36 +1,24 @@
-/* import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import clipboardCopy from 'clipboard-copy';
 import share from '../../images/shareIcon.svg';
 
-function ShareButton() {
-  const [linkCopy, setLinkCopy] = useState(false);
-  const { pathname } = useLocation();
-  const copy = clipboardCopy;
+type CopyToClipboardProps = {
+  textToCopy: string;
+};
 
-  function CopyMessage() {
-    if (pathname.includes('in-progress')) {
-      const [, item, id] = pathname.split('/');
-      copy(`http://localhost:3000/${item}/${id}`);
-      setLinkCopy(true);
-    } else {
-      setLinkCopy(true);
-      copy(`http://localhost:3000${pathname}`);
-    }
-  }
+export default function ShareButton({ textToCopy }: CopyToClipboardProps) {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(textToCopy);
+    setCopied(true);
+  };
 
   return (
     <div>
-
-      <button
-        data-testid="share-btn"
-        onClick={ () => CopyMessage() }
-      >
-        {linkCopy && <h1>Link copied!</h1> }
+      <button data-testid="share-btn" onClick={ copyToClipboard }>
+        {copied && <h1>Link copied!</h1>}
         <img src={ share } alt="compartilhar" />
       </button>
     </div>
   );
 }
-export default ShareButton;
- */

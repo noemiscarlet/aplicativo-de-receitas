@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+/* import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import clipboardCopy from 'clipboard-copy';
 import share from '../../images/shareIcon.svg';
@@ -33,3 +33,4 @@ function ShareButton() {
   );
 }
 export default ShareButton;
+ */

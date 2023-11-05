@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
-import clipboardCopy from 'clipboard-copy';
+/* import clipboardCopy from 'clipboard-copy'; */
 import { SearchDrinksById } from '../../Services/getDrink';
 import { SearchMealsById } from '../../Services/getFood';
 import { setMeals, setDrinks } from '../../Services/helperMealsDrinks';
 import { CurrentRecipeType, DoneRecipesTypes } from '../../types/types';
-import ShareButton from '../../componentes/Buttons/ShareButton';
+// import ShareButton from '../../componentes/Buttons/ShareButton';
 import FavoriteButton from '../../componentes/Buttons/FavoriteButton';
 import CheckBox from '../../componentes/Buttons/CheckBox';
 
 function RecipeInProgress() {
   const navigate = useNavigate();
-  const [linkCopy, setLinkCopy] = useState(false);
-  const copy = clipboardCopy;
+  /*   const [linkCopy, setLinkCopy] = useState(false);
+  const copy = clipboardCopy; */
   const [recipeInProgress, setProgress] = useState<CurrentRecipeType>({
     title: '',
     img: '',
@@ -206,9 +206,9 @@ function RecipeInProgress() {
         Finalizar receita
 
       </button>
-      <ShareButton
+      {/*  <ShareButton
         data-testid="'favorite-btn'"
-      />
+      /> */}
       <FavoriteButton idDaReceita={ idDaReceita } pathName={ pathname } />
     </div>
   );

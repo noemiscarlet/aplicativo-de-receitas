@@ -112,15 +112,6 @@ function RecipeDetails() {
             <h3 data-testid="instructions">{instructions}</h3>
             {alcoholic && <h3 data-testid="recipe-category">{alcoholic}</h3>}
             <h3 data-testid="recipe-category">{category}</h3>
-            {video
-          && <iframe
-            data-testid="video"
-            src={ video }
-            title="YouTube video player"
-            width="500"
-            height="300"
-            frameBorder="0"
-          />}
           </div>
         )}
         <RecomendationCarousel recomendation={ recomendation } />

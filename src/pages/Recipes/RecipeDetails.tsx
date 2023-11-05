@@ -4,7 +4,7 @@ import { DrinksFetch } from '../../Services/getDrink';
 import { MealsFetch } from '../../Services/getFood';
 import ButtonStartRecipe from '../../componentes/Buttons/ButtonStartRecipe';
 import FavoriteButton from '../../componentes/Buttons/FavoriteButton';
-import ShareButton from '../../componentes/Buttons/ShareButton';
+// import ShareButton from '../../componentes/Buttons/ShareButton';
 import RecomendationCarousel from './RecomendationCarousel';
 import { DrinksCardType, MealsCardType } from '../../types/types';
 
@@ -124,7 +124,7 @@ function RecipeDetails() {
           </div>
         )}
         <RecomendationCarousel recomendation={ recomendation } />
-        <ShareButton />
+        {/* <ShareButton /> */}
         <FavoriteButton pathName={ pathname } idDaReceita={ idDaReceita } />
       </div>
       <div>

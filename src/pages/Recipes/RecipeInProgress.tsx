@@ -11,8 +11,8 @@ import CheckBox from '../../componentes/Buttons/CheckBox';
 
 function RecipeInProgress() {
   const navigate = useNavigate();
-  /*   const [linkCopy, setLinkCopy] = useState(false);
-  const copy = clipboardCopy; */
+  // const [linkCopy, setLinkCopy] = useState(false);
+
   const [recipeInProgress, setProgress] = useState<CurrentRecipeType>({
     title: '',
     img: '',

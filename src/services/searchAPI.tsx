@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import fetch from 'cross-fetch';
 
 export function mealsOrDrinks() {
   let END_POINT = '';

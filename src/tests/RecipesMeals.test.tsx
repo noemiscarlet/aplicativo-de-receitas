@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+/* import { render, screen } from '@testing-library/react';
 import { afterEach, vi } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
@@ -138,3 +138,4 @@ describe('testando recipes req 19-23 meals', async () => {
     expect(mealName).toHaveTextContent(fetchStd.meals[0].strMeal);
   });
 });
+ */

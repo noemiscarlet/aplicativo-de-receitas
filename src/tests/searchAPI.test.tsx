@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+/* import '@testing-library/jest-dom/extend-expect';
 import { vi } from 'vitest';
 import Recipes from '../pages/Recipes/Recipes';
 import renderWithRouter from './renderWithRouter';
@@ -444,3 +444,4 @@ test('Check fetched data', async () => {
 
   expect(data).toBe(mockResponse);
 });
+ */

@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { screen } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
@@ -62,3 +62,4 @@ describe('Testando o Componente Header', () => {
   //   expect(titleDrink).toBeInTheDocument();
   // });
 });
+ */

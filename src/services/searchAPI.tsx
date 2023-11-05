@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 export function mealsOrDrinks() {
   let END_POINT = '';
   const END_POINT_MEALS = 'https://www.themealdb.com/api/json/v1/1/';

@@ -1,4 +1,4 @@
-/* import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import App from '../App';
 
@@ -119,4 +119,3 @@ describe('Tests for Req. 02 - 06', () => {
     expect(window.location.pathname).toBe('/meals');
   });
 });
- */

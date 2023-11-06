@@ -8,6 +8,7 @@ import { CurrentRecipeType, DoneRecipesTypes } from '../../types/types';
 // import ShareButton from '../../componentes/Buttons/ShareButton';
 import FavoriteButton from '../../componentes/Buttons/FavoriteButton';
 import CheckBox from '../../componentes/Buttons/CheckBox';
+import ShareButton from '../../componentes/Buttons/ShareButton';
 
 function RecipeInProgress() {
   const navigate = useNavigate();
@@ -206,9 +207,7 @@ function RecipeInProgress() {
         Finalizar receita
 
       </button>
-      {/*  <ShareButton
-        data-testid="'favorite-btn'"
-      /> */}
+      <ShareButton data-testid="share-btn" textToCopy={ pathname } />
       <FavoriteButton idDaReceita={ idDaReceita } pathName={ pathname } />
     </div>
   );

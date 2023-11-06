@@ -125,8 +125,7 @@ function RecipeDetails() {
           </div>
         )}
         <RecomendationCarousel recomendation={ recomendation } />
-        {/* <ShareButton /> */}
-        <ShareButton textToCopy={ `http://localhost:3000${pathname}` } />
+        <ShareButton textToCopy={ pathname } />
         <FavoriteButton pathName={ pathname } idDaReceita={ idDaReceita } />
       </div>
       <div>

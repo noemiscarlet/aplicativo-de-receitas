@@ -9,8 +9,14 @@ export default function ShareButton({ textToCopy }: CopyToClipboardProps) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(textToCopy);
-    setCopied(true);
+    if (textToCopy.includes('in-progress')) {
+      const [, item, id] = textToCopy.split('/');
+      navigator.clipboard.writeText(`http://localhost:3000/${item}/${id}`);
+      setCopied(true);
+    } else {
+      navigator.clipboard.writeText(`http://localhost:3000${textToCopy}`);
+      setCopied(true);
+    }
   };
 
   return (

@@ -55,10 +55,10 @@ describe('Testando o Componente Header', () => {
     expect(titleDrink).toBeInTheDocument();
     expect(imgProfile).toBeInTheDocument();
   });
-  // test('Teste o compomente Header na tela Profile', () => {
-  //   renderWithRouter(<App />, { route: '/*' });
+/*   test('Teste o compomente Header na tela Profile', () => {
+    renderWithRouter(<App />, { route: '/' });
 
-  //   const titleDrink = screen.getByRole('heading', { name: /not found/i });
-  //   expect(titleDrink).toBeInTheDocument();
-  // });
+    const titleDrink = screen.getByRole('heading', { name: /not found/i });
+    expect(titleDrink).toBeInTheDocument();
+  }); */
 });
